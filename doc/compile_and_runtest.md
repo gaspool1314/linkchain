@@ -2,11 +2,6 @@
 
 编译享云链项目首先需要使用monero编译出依赖的静态库。
 
-golang使用1.12版本
-
-# 准备
-
-`$ git clone https://github.com/gaspool1314/linkchain.git ; cd linkchain ; git checkout origin/br_testnet -b br_testnet `
 
 # 编译享云链
 ## 获取并运行镜像
@@ -81,12 +76,12 @@ start lkchain ...
 pid: 390
 ```
 
-测试RPC:
+第一次启动会init创世块数据，要等5分钟左右，再测试RPC:
 
 `# curl -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":"0","method":"eth_blockNumber","params":[]}' http://127.0.0.1:16000`
 
 ```bash
-{"jsonrpc":"2.0","id":"0","result":"0x0"}
+{"jsonrpc":"2.0","id":"0","result":"0x109459"}
 ```
 查看Log:
 `# tail /linkchain/pack/lkchain/data/logs/lkchain.log`

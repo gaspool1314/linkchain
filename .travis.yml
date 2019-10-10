@@ -1,16 +1,24 @@
 language: go
 
+go:
+  - 1.12.x
+
 sudo: required
-services:
-  - docker
+#services:
+#  - docker
 
 before_script:
   - echo "before_script"
+  - mkdir -p libs/cryptonote/xcrypto/libs_linux
+  - curl -L -O https://github.com/lianxiangcloud/monero/releases/download/libsxcrypto_v0.1.0/lklibs-centos7-x64.tar.gz
+  - tar zxf lklibs-centos7-x64.tar.gz
+  - cp lklibs/* libs/cryptonote/xcrypto/libs_linux/
 
 script:
   # 这里编写测试代码的命令
   - echo "test code"
-  - docker image build -t lkbuilder .
+  - bash ./build.sh
+  #- docker image build -t lkbuilder .
 
 after_success:
   # 当代码测试通过后执行的命令

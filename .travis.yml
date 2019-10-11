@@ -22,5 +22,6 @@ script:
   #- docker image build -t lkbuilder .
 
 after_success:
+  - echo "after_success"
   # 当代码测试通过后执行的命令
   #- docker image build -t lkbuilder .
